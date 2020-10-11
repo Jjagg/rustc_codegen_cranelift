@@ -250,17 +250,13 @@ fn target_triple(sess: &Session) -> target_lexicon::Triple {
     sess.target.llvm_target.parse().unwrap()
 }
 
-fn build_isa(sess: &Session, enable_pic: bool) -> Box<dyn isa::TargetIsa + 'static> {
+fn build_isa(sess: &Session, _enable_pic: bool) -> Box<dyn isa::TargetIsa + 'static> {
     use target_lexicon::BinaryFormat;
 
     let target_triple = crate::target_triple(sess);
 
     let mut flags_builder = settings::builder();
-    if enable_pic {
-        flags_builder.enable("is_pic").unwrap();
-    } else {
-        flags_builder.set("is_pic", "false").unwrap();
-    }
+    flags_builder.enable("is_pic").unwrap();
     flags_builder.set("enable_probestack", "false").unwrap(); // __cranelift_probestack is not provided
     flags_builder
         .set(

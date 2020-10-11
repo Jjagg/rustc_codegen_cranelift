@@ -158,7 +158,7 @@ fn build_vtable<'tcx>(
         )
         .unwrap();
 
-    fx.cx.module.define_data(data_id, &data_ctx).unwrap();
+    let _ = fx.cx.module.define_data(data_id, &data_ctx);
 
     data_id
 }

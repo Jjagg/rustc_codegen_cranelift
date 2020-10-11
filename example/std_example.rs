@@ -15,9 +15,9 @@ fn main() {
     let stderr = ::std::io::stderr();
     let mut stderr = stderr.lock();
 
-    std::thread::spawn(move || {
-        println!("Hello from another thread!");
-    });
+    //std::thread::spawn(move || {
+    //    println!("Hello from another thread!");
+    //});
 
     writeln!(stderr, "some {} text", "<unknown>").unwrap();
 
