@@ -183,7 +183,7 @@ pub struct CraneliftCodegenBackend {
 impl CodegenBackend for CraneliftCodegenBackend {
     fn init(&self, sess: &Session) {
         if sess.lto() != rustc_session::config::Lto::No && sess.opts.cg.embed_bitcode {
-            sess.warn("LTO is not supported. You may get a linker error.");
+            //sess.warn("LTO is not supported. You may get a linker error.");
         }
     }
 

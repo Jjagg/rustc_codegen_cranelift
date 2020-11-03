@@ -24,6 +24,7 @@ impl rustc_driver::Callbacks for CraneliftPassesCallbacks {
         self.time_passes = config.opts.prints.is_empty()
             && (config.opts.debugging_opts.time_passes || config.opts.debugging_opts.time);
 
+        eprintln!("{:?}", config.opts.debugging_opts.trim_diagnostic_paths);
         config.opts.cg.panic = Some(PanicStrategy::Abort);
         config.opts.debugging_opts.panic_abort_tests = true;
         config.opts.maybe_sysroot = Some(
